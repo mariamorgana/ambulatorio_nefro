@@ -421,7 +421,7 @@ function App() {
 
         {tab === "calendario" && <AgendaOverview days={days} absenceByDate={absenceByDate} />}
         {tab === "busca" && <PatientSearch appts={agendaData.appts} />}
-        {tab === "data" && <DateSearch appts={agendaData.appts} days={days} absenceByDate={absenceByDate} />}
+        {tab === "data" && <DateSearch days={days} absenceByDate={absenceByDate} />}
       </main>
 
       <footer className="footnote">
@@ -819,7 +819,7 @@ function PatientSearch({ appts }) {
 }
 
 /* ================= DATE SEARCH ================= */
-function DateSearch({ appts, days, absenceByDate }) {
+function DateSearch({ days, absenceByDate }) {
   const [selectedDate, setSelectedDate] = useState("");
 
   const minDate = days.length ? days[0].data : undefined;
@@ -830,14 +830,10 @@ function DateSearch({ appts, days, absenceByDate }) {
     return days.find(d => d.data === selectedDate) || null;
   }, [selectedDate, days]);
 
-  const results = useMemo(() => {
-    if (!selectedDate) return null;
-    return appts.filter(a => a.data === selectedDate).sort((a, b) => a.hora.localeCompare(b.hora));
-  }, [selectedDate, appts]);
-
   const status = dayInfo ? statusFor(dayInfo.marcados) : null;
   const meta = status ? STATUS_META[status] : null;
   const abs = selectedDate ? absenceByDate[selectedDate] : null;
+  const pct = dayInfo ? Math.min(100, Math.round((dayInfo.marcados / LIMIAR_OVERFLOW) * 100)) : 0;
 
   return (
     <section className="search-section">
@@ -860,62 +856,55 @@ function DateSearch({ appts, days, absenceByDate }) {
       {!selectedDate && (
         <div className="empty-state">
           <Icon.Calendar size={28}/>
-          <p>Escolha uma data para ver todas as consultas marcadas naquele dia.</p>
+          <p>Escolha uma data para ver a ocupação da agenda naquele dia.</p>
         </div>
       )}
 
-      {selectedDate && (
+      {selectedDate && !dayInfo && (
+        <div className="empty-state">
+          <Icon.Alert size={28}/>
+          <p>Nenhum dado de agenda encontrado para esta data.</p>
+        </div>
+      )}
+
+      {selectedDate && dayInfo && (
         <div className="patient-card">
           <div className="patient-card-header">
             <div>
               <div className="patient-name capitalize">{weekdayOf(selectedDate)}</div>
               <div className="patient-pront">{formatDateLong(selectedDate)}</div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              {dayInfo && (
-                <span className="day-count" style={{ color: meta.color }}>
-                  {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
-                </span>
-              )}
-              <span className="pill pill--count">
-                {results.length} consulta{results.length !== 1 ? "s" : ""}
-              </span>
-            </div>
+            <span className="day-count" style={{ color: meta.color }}>
+              {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
+            </span>
           </div>
 
-          {dayInfo && status !== "normal" && (
+          {status !== "normal" && (
             <div className="badge" style={{ color: meta.color, background: meta.bg, marginBottom: 12, width: "fit-content" }}>
               <Icon.Alert size={12}/> {meta.label}
             </div>
           )}
 
+          <div className="bar-track" style={{ marginBottom: 12 }}>
+            <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
+            <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
+          </div>
+
+          <div className="day-meta" style={{ marginBottom: 12 }}>
+            {dayInfo.livres > 0 && <span className="meta-chip">{dayInfo.livres} vaga{dayInfo.livres>1?"s":""} livre{dayInfo.livres>1?"s":""}</span>}
+            {dayInfo.reservado > 0 && <span className="meta-chip">{dayInfo.reservado} reservada{dayInfo.reservado>1?"s":""}</span>}
+            {dayInfo.feriado > 0 && <span className="meta-chip">{dayInfo.feriado} bloqueio(feriado)</span>}
+            {dayInfo.bloqueio_outros > 0 && <span className="meta-chip">{dayInfo.bloqueio_outros} bloqueio(outros)</span>}
+          </div>
+
           {abs && abs.length > 0 && (
-            <div className="absence-flags" style={{ marginBottom: 12 }}>
+            <div className="absence-flags">
               {abs.map((a, i) => (
                 <div className={"absence-flag flag--" + tipoClass(a.tipo)} key={i}>
                   <Icon.Stethoscope size={12}/> {a.medico} — {a.tipo}
                 </div>
               ))}
             </div>
-          )}
-
-          {results.length === 0 ? (
-            <p className="empty-hint">Nenhuma consulta marcada para esta data.</p>
-          ) : (
-            <table className="appt-table">
-              <thead>
-                <tr><th>Horário</th><th>Prontuário</th><th>Médico(a)</th></tr>
-              </thead>
-              <tbody>
-                {results.map((it, i) => (
-                  <tr key={i}>
-                    <td>{it.hora}</td>
-                    <td className="mono">{it.prontuario}</td>
-                    <td>{toTitleCase(it.medico)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
           )}
         </div>
       )}
