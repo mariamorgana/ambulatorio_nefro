@@ -842,26 +842,28 @@ function AgendaOverview({ days, absenceByDate, holidayByDate }) {
 
                   <div className="day-card-body">
                     <div className="day-card-toprow">
-                      {holiday ? (
+                      <span className="day-count" style={{ color: holiday && d.marcados > 0 ? "var(--danger)" : meta.color }}>
+                        {d.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
+                      </span>
+                      {holiday && (
                         <span className="badge badge--blocked">
                           <Icon.Alert size={12}/> Agenda bloqueada — {holiday.tipo}{holiday.nome ? ` (${holiday.nome})` : ""}
                         </span>
-                      ) : (
-                        <>
-                          <span className="day-count" style={{ color: meta.color }}>
-                            {d.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
-                          </span>
-                          {status !== "normal" && (
-                            <span className="badge" style={{ color: meta.color, background: meta.bg }}>
-                              <Icon.Alert size={12}/> {meta.label}
-                            </span>
-                          )}
-                        </>
+                      )}
+                      {!holiday && status !== "normal" && (
+                        <span className="badge" style={{ color: meta.color, background: meta.bg }}>
+                          <Icon.Alert size={12}/> {meta.label}
+                        </span>
                       )}
                     </div>
-                    {!holiday && (
+                    {holiday && d.marcados > 0 && (
+                      <div className="badge badge--danger-solid" style={{ marginBottom: 6, width: "fit-content" }}>
+                        <Icon.Alert size={12}/> {d.marcados} paciente{d.marcados>1?"s":""} agendado{d.marcados>1?"s":""} em data bloqueada — possível marcação equivocada
+                      </div>
+                    )}
+                    {(!holiday || d.marcados > 0) && (
                       <div className="bar-track">
-                        <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
+                        <div className="bar-fill" style={{ width: pct + "%", background: holiday ? "var(--danger)" : meta.color }} />
                         <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
                       </div>
                     )}
@@ -1032,26 +1034,30 @@ function DateSearch({ days, absenceByDate, holidayByDate }) {
               <div className="patient-name capitalize">{weekdayOf(selectedDate)}</div>
               <div className="patient-pront">{formatDateLong(selectedDate)}</div>
             </div>
-            {!holiday && (
-              <span className="day-count" style={{ color: meta.color }}>
-                {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
-              </span>
-            )}
+            <span className="day-count" style={{ color: holiday && dayInfo.marcados > 0 ? "var(--danger)" : meta.color }}>
+              {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
+            </span>
           </div>
 
-          {holiday ? (
-            <div className="badge badge--blocked" style={{ marginBottom: 12, width: "fit-content" }}>
+          {holiday && (
+            <div className="badge badge--blocked" style={{ marginBottom: 8, width: "fit-content" }}>
               <Icon.Alert size={12}/> Agenda bloqueada — {holiday.tipo}{holiday.nome ? ` (${holiday.nome})` : ""}
             </div>
-          ) : status !== "normal" && (
+          )}
+          {!holiday && status !== "normal" && (
             <div className="badge" style={{ color: meta.color, background: meta.bg, marginBottom: 12, width: "fit-content" }}>
               <Icon.Alert size={12}/> {meta.label}
             </div>
           )}
+          {holiday && dayInfo.marcados > 0 && (
+            <div className="badge badge--danger-solid" style={{ marginBottom: 12, width: "fit-content" }}>
+              <Icon.Alert size={12}/> {dayInfo.marcados} paciente{dayInfo.marcados>1?"s":""} agendado{dayInfo.marcados>1?"s":""} em data bloqueada — possível marcação equivocada
+            </div>
+          )}
 
-          {!holiday && (
+          {(!holiday || dayInfo.marcados > 0) && (
             <div className="bar-track" style={{ marginBottom: 12 }}>
-              <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
+              <div className="bar-fill" style={{ width: pct + "%", background: holiday ? "var(--danger)" : meta.color }} />
               <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
             </div>
           )}
@@ -1208,6 +1214,11 @@ const CSS = `
   color: var(--danger);
   background: rgba(178, 58, 46, 0.16);
   border: 1px solid rgba(178, 58, 46, 0.35);
+}
+.badge--danger-solid {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 20px;
+  color: #fff; background: var(--danger);
 }
 .patient-card--blocked {
   background: rgba(178, 58, 46, 0.10);
