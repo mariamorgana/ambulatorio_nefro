@@ -23,7 +23,7 @@ roda direto no navegador.
 5. Clique em **Save**. Em alguns minutos o GitHub mostrará o link do site,
    algo como:
    ```
-   https://SEU_USUARIO.github.io/SEU_REPOSITORIO/
+   https://mariamorgana.github.io/ambulatorio_nefro/
    ```
 
 Pronto — esse link pode ser acessado e compartilhado normalmente.
