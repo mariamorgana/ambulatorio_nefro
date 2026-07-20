@@ -245,6 +245,15 @@ const DEFAULT_ABSENCES = [
   { id: "a3", medico: "Maria Tavares", tipo: "Férias", datas: ["2026-11-09", "2026-11-16", "2026-11-23"] },
 ];
 
+const TIPO_BLOQUEIO = ["Feriado", "Ponto Facultativo"];
+
+const DEFAULT_HOLIDAYS = [
+  { id: "h1", data: "2026-09-07", tipo: "Feriado", nome: "Independência do Brasil" },
+  { id: "h2", data: "2026-10-12", tipo: "Feriado", nome: "Nossa Senhora Aparecida" },
+  { id: "h3", data: "2026-11-02", tipo: "Feriado", nome: "Finados" },
+  { id: "h4", data: "2027-02-08", tipo: "Ponto Facultativo", nome: "Carnaval" },
+];
+
 /* ================= ICONS (inline, no deps) ================= */
 const Icon = {
   Alert: (p) => (<svg viewBox="0 0 24 24" width={p.size||16} height={p.size||16} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>),
@@ -267,6 +276,7 @@ const DEFAULT_AGENDA_META = { fileName: null, importedAt: null, totalRows: null,
 
 function App() {
   const [absences, setAbsences] = useState(DEFAULT_ABSENCES);
+  const [holidays, setHolidays] = useState(DEFAULT_HOLIDAYS);
   const [tab, setTab] = useState("calendario");
   const [storageReady, setStorageReady] = useState(false);
   const [agendaData, setAgendaData] = useState({ days: DEFAULT_RAW_DAYS, appts: DEFAULT_RAW_APPTS });
@@ -280,6 +290,16 @@ function App() {
         if (res && res.value) {
           const parsed = JSON.parse(res.value);
           if (Array.isArray(parsed) && parsed.length) setAbsences(parsed);
+        }
+      } catch (e) {
+        // no stored value yet — keep defaults
+      }
+
+      try {
+        const resH = await window.storage?.get?.("feriados", false);
+        if (resH && resH.value) {
+          const parsedH = JSON.parse(resH.value);
+          if (Array.isArray(parsedH) && parsedH.length) setHolidays(parsedH);
         }
       } catch (e) {
         // no stored value yet — keep defaults
@@ -322,6 +342,15 @@ function App() {
       } catch (e) { /* ignore */ }
     })();
   }, [absences, storageReady]);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    (async () => {
+      try {
+        await window.storage?.set?.("feriados", JSON.stringify(holidays), false);
+      } catch (e) { /* ignore */ }
+    })();
+  }, [holidays, storageReady]);
 
   const handleAgendaLoaded = useCallback((data, meta) => {
     setAgendaData(data);
@@ -367,7 +396,25 @@ function App() {
     return map;
   }, [absences]);
 
-  const days = useMemo(() => agendaData.days.slice().sort((a,b) => a.data.localeCompare(b.data)), [agendaData]);
+  // map date -> holiday/ponto facultativo entry (only one per date)
+  const holidayByDate = useMemo(() => {
+    const map = {};
+    holidays.forEach(h => { map[h.data] = h; });
+    return map;
+  }, [holidays]);
+
+  const days = useMemo(() => {
+    const base = agendaData.days.slice();
+    const existingDates = new Set(base.map(d => d.data));
+    // dias de bloqueio futuros que ainda não vieram no CSV importado aparecem como
+    // um "dia vazio" só para o card ficar visível e marcado em vermelho no calendário.
+    holidays.forEach(h => {
+      if (!existingDates.has(h.data)) {
+        base.push({ data: h.data, marcados: 0, livres: 0, feriado: 0, bloqueio_outros: 0, reservado: 0, total_slots: 0, semDadosImportados: true });
+      }
+    });
+    return base.sort((a,b) => a.data.localeCompare(b.data));
+  }, [agendaData, holidays]);
 
   const totalMarcados = useMemo(() => days.reduce((s,d) => s + d.marcados, 0), [days]);
   const diasSinalizados = useMemo(() => days.filter(d => statusFor(d.marcados) === "sinalizar").length, [days]);
@@ -405,6 +452,7 @@ function App() {
 
       <main className="content">
         <AgendaUploadPanel meta={agendaMeta} onLoaded={handleAgendaLoaded} onPublish={handlePublish} onDiscardLocal={handleDiscardLocal} />
+        <HolidayPanel holidays={holidays} setHolidays={setHolidays} />
         <AbsencePanel absences={absences} setAbsences={setAbsences} />
 
         <nav className="tabs" role="tablist">
@@ -419,9 +467,9 @@ function App() {
           </button>
         </nav>
 
-        {tab === "calendario" && <AgendaOverview days={days} absenceByDate={absenceByDate} />}
+        {tab === "calendario" && <AgendaOverview days={days} absenceByDate={absenceByDate} holidayByDate={holidayByDate} />}
         {tab === "busca" && <PatientSearch appts={agendaData.appts} />}
-        {tab === "data" && <DateSearch days={days} absenceByDate={absenceByDate} />}
+        {tab === "data" && <DateSearch days={days} absenceByDate={absenceByDate} holidayByDate={holidayByDate} />}
       </main>
 
       <footer className="footnote">
@@ -659,8 +707,105 @@ function tipoClass(tipo) {
   return "licenca";
 }
 
+/* ================= HOLIDAY / BLOCKED DATES PANEL ================= */
+function HolidayPanel({ holidays, setHolidays }) {
+  const [open, setOpen] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [dataStr, setDataStr] = useState("");
+  const [tipo, setTipo] = useState(TIPO_BLOQUEIO[0]);
+  const [nome, setNome] = useState("");
+  const [formError, setFormError] = useState("");
+
+  const resetForm = () => { setDataStr(""); setTipo(TIPO_BLOQUEIO[0]); setNome(""); setFormError(""); };
+
+  const handleAdd = () => {
+    const rawDates = dataStr.split(",").map(s => s.trim()).filter(Boolean);
+    if (!rawDates.length) { setFormError("Informe ao menos uma data (ex: 08/02/27)."); return; }
+    const entries = [];
+    for (const r of rawDates) {
+      const iso = ddmmyyyyToISO(r);
+      if (!iso) { setFormError(`Data inválida: "${r}". Use o formato dd/mm/aa.`); return; }
+      entries.push({ id: "h" + Date.now() + "_" + iso, data: iso, tipo, nome: nome.trim() });
+    }
+    setHolidays(prev => {
+      const withoutDuplicates = prev.filter(h => !entries.some(e => e.data === h.data));
+      return [...withoutDuplicates, ...entries];
+    });
+    resetForm();
+    setShowForm(false);
+  };
+
+  const handleRemove = (id) => setHolidays(prev => prev.filter(h => h.id !== id));
+
+  const sorted = holidays.slice().sort((a,b) => a.data.localeCompare(b.data));
+
+  return (
+    <section className="panel absence-panel">
+      <button className="panel-header" onClick={() => setOpen(o => !o)}>
+        <div className="panel-header-left">
+          <Icon.Alert size={17}/>
+          <span>Feriados &amp; pontos facultativos (agenda bloqueada)</span>
+          <span className="pill">{holidays.length}</span>
+        </div>
+        <span className={"chevron" + (open ? " chevron--open" : "")}><Icon.ChevronDown size={17}/></span>
+      </button>
+
+      {open && (
+        <div className="panel-body">
+          {holidays.length === 0 && <p className="empty-hint">Nenhuma data bloqueada cadastrada.</p>}
+
+          <div className="absence-list">
+            {sorted.map(h => (
+              <div className="absence-card holiday-card" key={h.id}>
+                <div className="absence-card-main">
+                  <span className="date-chip date-chip--holiday">{formatDateShort(h.data)}</span>
+                  <div className={"absence-tipo tipo--" + (h.tipo === "Feriado" ? "licenca" : "cobertura")}>{h.tipo}</div>
+                  {h.nome && <div className="holiday-nome">{h.nome}</div>}
+                </div>
+                <button className="icon-btn icon-btn--danger" onClick={() => handleRemove(h.id)} title="Remover data bloqueada">
+                  <Icon.Trash size={15}/>
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {!showForm ? (
+            <button className="btn btn--ghost" onClick={() => setShowForm(true)}>
+              <Icon.Plus size={15}/> Bloquear data(s)
+            </button>
+          ) : (
+            <div className="absence-form">
+              <div className="form-row">
+                <label>
+                  Motivo
+                  <select value={tipo} onChange={e => setTipo(e.target.value)}>
+                    {TIPO_BLOQUEIO.map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </label>
+                <label>
+                  Descrição (opcional)
+                  <input value={nome} onChange={e => setNome(e.target.value)} placeholder="Ex: Carnaval" />
+                </label>
+              </div>
+              <label className="form-row-full">
+                Data(s) — separe por vírgula, formato dd/mm/aa
+                <input value={dataStr} onChange={e => setDataStr(e.target.value)} placeholder="Ex: 08/02/27, 09/02/27" />
+              </label>
+              {formError && <div className="form-error"><Icon.Alert size={14}/> {formError}</div>}
+              <div className="form-actions">
+                <button className="btn btn--primary" onClick={handleAdd}>Salvar</button>
+                <button className="btn btn--text" onClick={() => { resetForm(); setShowForm(false); }}>Cancelar</button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
 /* ================= AGENDA OVERVIEW ================= */
-function AgendaOverview({ days, absenceByDate }) {
+function AgendaOverview({ days, absenceByDate, holidayByDate }) {
   const grouped = useMemo(() => {
     const map = new Map();
     days.forEach(d => {
@@ -686,9 +831,10 @@ function AgendaOverview({ days, absenceByDate }) {
               const status = statusFor(d.marcados);
               const meta = STATUS_META[status];
               const abs = absenceByDate[d.data];
+              const holiday = holidayByDate ? holidayByDate[d.data] : null;
               const pct = Math.min(100, Math.round((d.marcados / LIMIAR_OVERFLOW) * 100));
               return (
-                <div className={"day-card day-card--" + status} key={d.data}>
+                <div className={"day-card day-card--" + status + (holiday ? " day-card--blocked" : "")} key={d.data}>
                   <div className="day-card-date">
                     <div className="day-num">{parseISO(d.data).getDate().toString().padStart(2,"0")}</div>
                     <div className="day-wd">{weekdayOf(d.data).replace("-feira","")}</div>
@@ -696,24 +842,35 @@ function AgendaOverview({ days, absenceByDate }) {
 
                   <div className="day-card-body">
                     <div className="day-card-toprow">
-                      <span className="day-count" style={{ color: meta.color }}>
-                        {d.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
-                      </span>
-                      {status !== "normal" && (
-                        <span className="badge" style={{ color: meta.color, background: meta.bg }}>
-                          <Icon.Alert size={12}/> {meta.label}
+                      {holiday ? (
+                        <span className="badge badge--blocked">
+                          <Icon.Alert size={12}/> Agenda bloqueada — {holiday.tipo}{holiday.nome ? ` (${holiday.nome})` : ""}
                         </span>
+                      ) : (
+                        <>
+                          <span className="day-count" style={{ color: meta.color }}>
+                            {d.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
+                          </span>
+                          {status !== "normal" && (
+                            <span className="badge" style={{ color: meta.color, background: meta.bg }}>
+                              <Icon.Alert size={12}/> {meta.label}
+                            </span>
+                          )}
+                        </>
                       )}
                     </div>
-                    <div className="bar-track">
-                      <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
-                      <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
-                    </div>
+                    {!holiday && (
+                      <div className="bar-track">
+                        <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
+                        <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
+                      </div>
+                    )}
                     <div className="day-meta">
                       {d.livres > 0 && <span className="meta-chip">{d.livres} vaga{d.livres>1?"s":""} livre{d.livres>1?"s":""}</span>}
                       {d.reservado > 0 && <span className="meta-chip">{d.reservado} reservada{d.reservado>1?"s":""}</span>}
                       {d.feriado > 0 && <span className="meta-chip">{d.feriado} bloqueio(feriado)</span>}
                       {d.bloqueio_outros > 0 && <span className="meta-chip">{d.bloqueio_outros} bloqueio(outros)</span>}
+                      {holiday && d.semDadosImportados && <span className="meta-chip">agenda ainda não importada</span>}
                     </div>
 
                     {abs && abs.length > 0 && (
@@ -819,7 +976,7 @@ function PatientSearch({ appts }) {
 }
 
 /* ================= DATE SEARCH ================= */
-function DateSearch({ days, absenceByDate }) {
+function DateSearch({ days, absenceByDate, holidayByDate }) {
   const [selectedDate, setSelectedDate] = useState("");
 
   const minDate = days.length ? days[0].data : undefined;
@@ -833,6 +990,7 @@ function DateSearch({ days, absenceByDate }) {
   const status = dayInfo ? statusFor(dayInfo.marcados) : null;
   const meta = status ? STATUS_META[status] : null;
   const abs = selectedDate ? absenceByDate[selectedDate] : null;
+  const holiday = selectedDate && holidayByDate ? holidayByDate[selectedDate] : null;
   const pct = dayInfo ? Math.min(100, Math.round((dayInfo.marcados / LIMIAR_OVERFLOW) * 100)) : 0;
 
   return (
@@ -868,33 +1026,42 @@ function DateSearch({ days, absenceByDate }) {
       )}
 
       {selectedDate && dayInfo && (
-        <div className="patient-card">
+        <div className={"patient-card" + (holiday ? " patient-card--blocked" : "")}>
           <div className="patient-card-header">
             <div>
               <div className="patient-name capitalize">{weekdayOf(selectedDate)}</div>
               <div className="patient-pront">{formatDateLong(selectedDate)}</div>
             </div>
-            <span className="day-count" style={{ color: meta.color }}>
-              {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
-            </span>
+            {!holiday && (
+              <span className="day-count" style={{ color: meta.color }}>
+                {dayInfo.marcados} <span className="day-count-sub">/ {LIMIAR_OVERFLOW}</span>
+              </span>
+            )}
           </div>
 
-          {status !== "normal" && (
+          {holiday ? (
+            <div className="badge badge--blocked" style={{ marginBottom: 12, width: "fit-content" }}>
+              <Icon.Alert size={12}/> Agenda bloqueada — {holiday.tipo}{holiday.nome ? ` (${holiday.nome})` : ""}
+            </div>
+          ) : status !== "normal" && (
             <div className="badge" style={{ color: meta.color, background: meta.bg, marginBottom: 12, width: "fit-content" }}>
               <Icon.Alert size={12}/> {meta.label}
             </div>
           )}
 
-          <div className="bar-track" style={{ marginBottom: 12 }}>
-            <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
-            <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
-          </div>
+          {!holiday && (
+            <div className="bar-track" style={{ marginBottom: 12 }}>
+              <div className="bar-fill" style={{ width: pct + "%", background: meta.color }} />
+              <div className="bar-threshold" style={{ left: (LIMIAR_SINALIZAR/LIMIAR_OVERFLOW*100) + "%" }} />
+            </div>
+          )}
 
           <div className="day-meta" style={{ marginBottom: 12 }}>
             {dayInfo.livres > 0 && <span className="meta-chip">{dayInfo.livres} vaga{dayInfo.livres>1?"s":""} livre{dayInfo.livres>1?"s":""}</span>}
             {dayInfo.reservado > 0 && <span className="meta-chip">{dayInfo.reservado} reservada{dayInfo.reservado>1?"s":""}</span>}
             {dayInfo.feriado > 0 && <span className="meta-chip">{dayInfo.feriado} bloqueio(feriado)</span>}
             {dayInfo.bloqueio_outros > 0 && <span className="meta-chip">{dayInfo.bloqueio_outros} bloqueio(outros)</span>}
+            {holiday && dayInfo.semDadosImportados && <span className="meta-chip">agenda ainda não importada</span>}
           </div>
 
           {abs && abs.length > 0 && (
@@ -1031,6 +1198,23 @@ const CSS = `
 .day-card { display: flex; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--border); border-radius: 12px; padding: 12px 14px; }
 .day-card--sinalizar { border-left-color: var(--warn); }
 .day-card--overflow { border-left-color: var(--danger); background: #FFFBFA; }
+.day-card--blocked {
+  border-left-color: var(--danger);
+  background: rgba(178, 58, 46, 0.10);
+  border: 1px solid rgba(178, 58, 46, 0.30);
+  border-left-width: 4px;
+}
+.badge--blocked {
+  color: var(--danger);
+  background: rgba(178, 58, 46, 0.16);
+  border: 1px solid rgba(178, 58, 46, 0.35);
+}
+.patient-card--blocked {
+  background: rgba(178, 58, 46, 0.10);
+  border: 1px solid rgba(178, 58, 46, 0.30);
+}
+.date-chip--holiday { background: rgba(178, 58, 46, 0.14); color: var(--danger); font-weight: 700; }
+.holiday-nome { font-size: 12.5px; color: var(--ink-soft); }
 .day-card-date { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 52px; flex-shrink: 0; border-right: 1px solid var(--border); padding-right: 12px; }
 .day-num { font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: 21px; font-weight: 700; line-height: 1; }
 .day-wd { font-size: 10.5px; text-transform: capitalize; color: var(--muted); margin-top: 3px; }
