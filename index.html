@@ -852,7 +852,7 @@ function AgendaOverview({ days, absenceByDate, holidayByDate }) {
                       )}
                       {holiday && d.marcados > 0 && (
                         <span className="badge badge--danger-solid">
-                          <Icon.Alert size={12}/> {d.marcados} paciente{d.marcados>1?"s":""} agendado{d.marcados>1?"s":""} em data bloqueada — possível marcação equivocada
+                          <Icon.Alert size={12}/> {d.marcados} paciente{d.marcados>1?"s":""} agendado{d.marcados>1?"s":""} em data bloqueada
                         </span>
                       )}
                       {!holiday && status !== "normal" && (
@@ -1051,7 +1051,7 @@ function DateSearch({ days, absenceByDate, holidayByDate }) {
           )}
           {holiday && dayInfo.marcados > 0 && (
             <div className="badge badge--danger-solid" style={{ marginBottom: 12, width: "fit-content" }}>
-              <Icon.Alert size={12}/> {dayInfo.marcados} paciente{dayInfo.marcados>1?"s":""} agendado{dayInfo.marcados>1?"s":""} em data bloqueada — possível marcação equivocada
+              <Icon.Alert size={12}/> {dayInfo.marcados} paciente{dayInfo.marcados>1?"s":""} agendado{dayInfo.marcados>1?"s":""} em data bloqueada
             </div>
           )}
 
