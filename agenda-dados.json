@@ -21,12 +21,12 @@
       },
       {
         "data": "2026-07-27",
-        "marcados": 41,
+        "marcados": 42,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 3,
         "reservado": 0,
-        "total_slots": 44
+        "total_slots": 45
       },
       {
         "data": "2026-08-03",
@@ -120,12 +120,12 @@
       },
       {
         "data": "2026-10-05",
-        "marcados": 31,
+        "marcados": 32,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
-        "total_slots": 34
+        "total_slots": 35
       },
       {
         "data": "2026-10-12",
@@ -174,12 +174,12 @@
       },
       {
         "data": "2026-11-16",
-        "marcados": 30,
+        "marcados": 31,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
-        "total_slots": 33
+        "total_slots": 34
       },
       {
         "data": "2026-11-23",
@@ -899,6 +899,12 @@
         "hora": "10:00",
         "prontuario": "46192845",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-07-27",
+        "hora": "10:17",
+        "prontuario": "46897427",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
         "data": "2026-07-27",
@@ -2684,6 +2690,12 @@
       },
       {
         "data": "2026-10-05",
+        "hora": "10:18",
+        "prontuario": "46897427",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-10-05",
         "hora": "10:30",
         "prontuario": "45907185",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
@@ -3329,6 +3341,12 @@
         "hora": "07:00",
         "prontuario": "4141230",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-11-16",
+        "hora": "07:00",
+        "prontuario": "4796207",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
       },
       {
         "data": "2026-11-16",
@@ -4929,10 +4947,10 @@
     ]
   },
   "meta": {
-    "fileName": "AGDA_2554081642158184897.csv",
-    "importedAt": "2026-07-27T13:01:06.011Z",
-    "totalRows": 936,
-    "totalMarcados": 747,
+    "fileName": "AGDA_6283605854449862911.csv",
+    "importedAt": "2026-07-27T13:38:33.574Z",
+    "totalRows": 939,
+    "totalMarcados": 750,
     "totalDias": 49,
     "isDefault": false,
     "source": "local"
