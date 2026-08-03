@@ -2,40 +2,13 @@
   "data": {
     "days": [
       {
-        "data": "2026-07-20",
-        "marcados": 40,
-        "livres": 2,
-        "feriado": 0,
-        "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 42
-      },
-      {
-        "data": "2026-07-21",
-        "marcados": 1,
-        "livres": 0,
-        "feriado": 0,
-        "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 1
-      },
-      {
-        "data": "2026-07-27",
-        "marcados": 44,
-        "livres": 0,
-        "feriado": 0,
-        "bloqueio_outros": 3,
-        "reservado": 0,
-        "total_slots": 47
-      },
-      {
         "data": "2026-08-03",
-        "marcados": 36,
+        "marcados": 38,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 9,
         "reservado": 0,
-        "total_slots": 45
+        "total_slots": 47
       },
       {
         "data": "2026-08-10",
@@ -192,12 +165,12 @@
       },
       {
         "data": "2026-11-30",
-        "marcados": 29,
+        "marcados": 30,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
-        "total_slots": 32
+        "total_slots": 33
       },
       {
         "data": "2026-12-07",
@@ -237,8 +210,8 @@
       },
       {
         "data": "2027-01-04",
-        "marcados": 11,
-        "livres": 5,
+        "marcados": 12,
+        "livres": 4,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 0,
@@ -282,8 +255,8 @@
       },
       {
         "data": "2027-02-01",
-        "marcados": 6,
-        "livres": 5,
+        "marcados": 10,
+        "livres": 1,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 0,
@@ -300,12 +273,12 @@
       },
       {
         "data": "2027-02-15",
-        "marcados": 11,
+        "marcados": 14,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 0,
-        "total_slots": 11
+        "total_slots": 14
       },
       {
         "data": "2027-02-22",
@@ -463,516 +436,6 @@
     ],
     "appts": [
       {
-        "data": "2026-07-20",
-        "hora": "00:00",
-        "prontuario": "7735269",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "00:00",
-        "prontuario": "2533867",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "7594690",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "4052882",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "6344196",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "45988854",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "7113434",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "46171021",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "2855229",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "10153906",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "46173878",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "45597648",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "46325106",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "7099203",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:00",
-        "prontuario": "10082931",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "07:30",
-        "prontuario": "3025178",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "08:00",
-        "prontuario": "3126760",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "08:00",
-        "prontuario": "7035702",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "08:30",
-        "prontuario": "2628261",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "08:30",
-        "prontuario": "6705826",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "08:58",
-        "prontuario": "46787172",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "09:00",
-        "prontuario": "7291073",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "09:00",
-        "prontuario": "6327464",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "09:30",
-        "prontuario": "46365946",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "09:30",
-        "prontuario": "4449005",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:00",
-        "prontuario": "46018214",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:00",
-        "prontuario": "46171658",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:30",
-        "prontuario": "6071286",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:30",
-        "prontuario": "2615920",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:38",
-        "prontuario": "46059218",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "10:53",
-        "prontuario": "7315989",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:00",
-        "prontuario": "10330423",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:00",
-        "prontuario": "6199061",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:05",
-        "prontuario": "5066048",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:30",
-        "prontuario": "46077004",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:30",
-        "prontuario": "7030778",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:46",
-        "prontuario": "46382917",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "11:52",
-        "prontuario": "46687471",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "13:00",
-        "prontuario": "6065577",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-20",
-        "hora": "13:45",
-        "prontuario": "46245999",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-21",
-        "hora": "07:00",
-        "prontuario": "46789830",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "00:00",
-        "prontuario": "8254997",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "4421673",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46238291",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46768099",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "5101597",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46244828",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "10040178",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "522102",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46940490",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46897427",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46260410",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "6186084",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "46158358",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:00",
-        "prontuario": "8346363",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:30",
-        "prontuario": "7854474",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:30",
-        "prontuario": "45508074",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "07:30",
-        "prontuario": "45741857",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "7812324",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "46008074",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "45594264",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "10082931",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "10082931",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "46922134",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "6649495",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "6649495",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "5952742",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:00",
-        "prontuario": "6065577",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:30",
-        "prontuario": "45619376",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "08:30",
-        "prontuario": "45981651",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:00",
-        "prontuario": "5491550",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:00",
-        "prontuario": "5192703",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:00",
-        "prontuario": "46687471",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:14",
-        "prontuario": "46724837",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:30",
-        "prontuario": "7474331",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "09:30",
-        "prontuario": "7401334",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:00",
-        "prontuario": "6686430",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:00",
-        "prontuario": "46192845",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:17",
-        "prontuario": "46897427",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:30",
-        "prontuario": "45434644",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:30",
-        "prontuario": "45934767",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "10:50",
-        "prontuario": "46735882",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "11:00",
-        "prontuario": "46480729",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "11:30",
-        "prontuario": "7570062",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-07-27",
-        "hora": "11:30",
-        "prontuario": "4796207",
-        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
-      },
-      {
         "data": "2026-08-03",
         "hora": "00:00",
         "prontuario": "5855978",
@@ -1112,6 +575,18 @@
       },
       {
         "data": "2026-08-03",
+        "hora": "08:00",
+        "prontuario": "45618345",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-08-03",
+        "hora": "08:00",
+        "prontuario": "46245999",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-08-03",
         "hora": "08:30",
         "prontuario": "6844138",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
@@ -1139,6 +614,12 @@
         "hora": "09:30",
         "prontuario": "46792164",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-08-03",
+        "hora": "09:34",
+        "prontuario": "6065577",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
       },
       {
         "data": "2026-08-03",
@@ -1180,12 +661,6 @@
         "data": "2026-08-03",
         "hora": "11:30",
         "prontuario": "45826617",
-        "medico": "STENIO CERQUEIRA DE ATAIDE"
-      },
-      {
-        "data": "2026-08-03",
-        "hora": "16:43",
-        "prontuario": "46245999",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
@@ -3866,6 +3341,12 @@
       },
       {
         "data": "2026-11-30",
+        "hora": "09:13",
+        "prontuario": "4034880",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-11-30",
         "hora": "09:30",
         "prontuario": "46958344",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
@@ -4412,6 +3893,12 @@
       },
       {
         "data": "2027-01-04",
+        "hora": "09:30",
+        "prontuario": "46189783",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-01-04",
         "hora": "09:39",
         "prontuario": "46924262",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
@@ -4742,6 +4229,12 @@
       },
       {
         "data": "2027-02-01",
+        "hora": "07:00",
+        "prontuario": "46975306",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
         "hora": "07:30",
         "prontuario": "3236684",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
@@ -4768,6 +4261,24 @@
         "data": "2027-02-01",
         "hora": "09:30",
         "prontuario": "46544771",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
+        "hora": "10:00",
+        "prontuario": "7269160",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
+        "hora": "10:30",
+        "prontuario": "46438529",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
+        "hora": "11:00",
+        "prontuario": "7860729",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
@@ -4798,6 +4309,24 @@
         "data": "2027-02-15",
         "hora": "07:00",
         "prontuario": "46922514",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2027-02-15",
+        "hora": "07:00",
+        "prontuario": "45920105",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2027-02-15",
+        "hora": "07:00",
+        "prontuario": "7365059",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2027-02-15",
+        "hora": "07:00",
+        "prontuario": "4803235",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
       },
       {
@@ -5139,11 +4668,11 @@
     ]
   },
   "meta": {
-    "fileName": "AGDA_9036946951390900942.csv",
-    "importedAt": "2026-07-27T17:26:51.038Z",
-    "totalRows": 958,
-    "totalMarcados": 779,
-    "totalDias": 51,
+    "fileName": "AGDA_4374158756361889366.csv",
+    "importedAt": "2026-08-03T13:06:30.973Z",
+    "totalRows": 874,
+    "totalMarcados": 705,
+    "totalDias": 48,
     "isDefault": false,
     "source": "local"
   },
