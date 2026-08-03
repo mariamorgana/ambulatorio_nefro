@@ -3,12 +3,12 @@
     "days": [
       {
         "data": "2026-08-03",
-        "marcados": 38,
+        "marcados": 39,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 9,
         "reservado": 0,
-        "total_slots": 47
+        "total_slots": 48
       },
       {
         "data": "2026-08-10",
@@ -165,12 +165,12 @@
       },
       {
         "data": "2026-11-30",
-        "marcados": 30,
+        "marcados": 32,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
-        "total_slots": 33
+        "total_slots": 35
       },
       {
         "data": "2026-12-07",
@@ -192,17 +192,17 @@
       },
       {
         "data": "2026-12-21",
-        "marcados": 26,
+        "marcados": 27,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
-        "total_slots": 29
+        "total_slots": 30
       },
       {
         "data": "2026-12-28",
-        "marcados": 11,
-        "livres": 7,
+        "marcados": 12,
+        "livres": 6,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 3,
@@ -210,12 +210,12 @@
       },
       {
         "data": "2027-01-04",
-        "marcados": 12,
-        "livres": 4,
+        "marcados": 13,
+        "livres": 11,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 16
+        "reservado": 2,
+        "total_slots": 26
       },
       {
         "data": "2027-01-05",
@@ -229,65 +229,74 @@
       {
         "data": "2027-01-11",
         "marcados": 19,
-        "livres": 0,
+        "livres": 8,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 19
+        "reservado": 2,
+        "total_slots": 29
       },
       {
         "data": "2027-01-18",
         "marcados": 15,
-        "livres": 0,
+        "livres": 8,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 15
+        "reservado": 2,
+        "total_slots": 25
       },
       {
         "data": "2027-01-25",
         "marcados": 16,
-        "livres": 0,
+        "livres": 8,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 16
+        "reservado": 2,
+        "total_slots": 26
       },
       {
         "data": "2027-02-01",
-        "marcados": 10,
-        "livres": 1,
+        "marcados": 12,
+        "livres": 8,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 11
+        "reservado": 2,
+        "total_slots": 22
       },
       {
         "data": "2027-02-08",
         "marcados": 4,
-        "livres": 0,
+        "livres": 8,
         "feriado": 10,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 14
+        "reservado": 2,
+        "total_slots": 24
       },
       {
         "data": "2027-02-15",
-        "marcados": 14,
-        "livres": 0,
+        "marcados": 15,
+        "livres": 7,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 14
+        "reservado": 2,
+        "total_slots": 24
       },
       {
         "data": "2027-02-22",
         "marcados": 13,
-        "livres": 0,
+        "livres": 8,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 13
+        "reservado": 2,
+        "total_slots": 23
+      },
+      {
+        "data": "2027-03-01",
+        "marcados": 2,
+        "livres": 16,
+        "feriado": 0,
+        "bloqueio_outros": 0,
+        "reservado": 2,
+        "total_slots": 20
       },
       {
         "data": "2027-03-06",
@@ -300,30 +309,39 @@
       },
       {
         "data": "2027-03-08",
-        "marcados": 1,
-        "livres": 0,
+        "marcados": 2,
+        "livres": 17,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 1
+        "reservado": 2,
+        "total_slots": 21
       },
       {
         "data": "2027-03-15",
         "marcados": 5,
-        "livres": 0,
+        "livres": 18,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 5
+        "reservado": 2,
+        "total_slots": 25
+      },
+      {
+        "data": "2027-03-22",
+        "marcados": 0,
+        "livres": 18,
+        "feriado": 0,
+        "bloqueio_outros": 0,
+        "reservado": 2,
+        "total_slots": 20
       },
       {
         "data": "2027-03-29",
         "marcados": 1,
-        "livres": 0,
+        "livres": 18,
         "feriado": 0,
         "bloqueio_outros": 0,
-        "reservado": 0,
-        "total_slots": 1
+        "reservado": 2,
+        "total_slots": 21
       },
       {
         "data": "2027-04-05",
@@ -417,12 +435,12 @@
       },
       {
         "data": "2027-07-19",
-        "marcados": 3,
+        "marcados": 4,
         "livres": 0,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 0,
-        "total_slots": 3
+        "total_slots": 4
       },
       {
         "data": "2027-07-26",
@@ -656,6 +674,12 @@
         "hora": "10:52",
         "prontuario": "10277366",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-08-03",
+        "hora": "11:21",
+        "prontuario": "7969611",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
         "data": "2026-08-03",
@@ -3293,6 +3317,18 @@
       },
       {
         "data": "2026-11-30",
+        "hora": "07:00",
+        "prontuario": "8216046",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2026-11-30",
+        "hora": "07:00",
+        "prontuario": "8188971",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-11-30",
         "hora": "07:30",
         "prontuario": "6659866",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
@@ -3773,6 +3809,12 @@
       },
       {
         "data": "2026-12-21",
+        "hora": "11:33",
+        "prontuario": "46789921",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-12-21",
         "hora": "12:22",
         "prontuario": "6068043",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
@@ -3812,6 +3854,12 @@
         "hora": "08:30",
         "prontuario": "4509949",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2026-12-28",
+        "hora": "08:30",
+        "prontuario": "7304694",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
         "data": "2026-12-28",
@@ -3913,6 +3961,12 @@
         "data": "2027-01-04",
         "hora": "10:43",
         "prontuario": "4970000",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-01-04",
+        "hora": "11:30",
+        "prontuario": "7413032",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
@@ -4230,6 +4284,12 @@
       {
         "data": "2027-02-01",
         "hora": "07:00",
+        "prontuario": "6844138",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
+        "hora": "07:00",
         "prontuario": "46975306",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
@@ -4279,6 +4339,12 @@
         "data": "2027-02-01",
         "hora": "11:00",
         "prontuario": "7860729",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-01",
+        "hora": "11:30",
+        "prontuario": "45554953",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
@@ -4346,6 +4412,12 @@
         "hora": "08:00",
         "prontuario": "3555240",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-02-15",
+        "hora": "08:00",
+        "prontuario": "46245999",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
       },
       {
         "data": "2027-02-15",
@@ -4468,6 +4540,18 @@
         "medico": "STENIO CERQUEIRA DE ATAIDE"
       },
       {
+        "data": "2027-03-01",
+        "hora": "07:30",
+        "prontuario": "10038578",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
+        "data": "2027-03-01",
+        "hora": "09:30",
+        "prontuario": "7969611",
+        "medico": "STENIO CERQUEIRA DE ATAIDE"
+      },
+      {
         "data": "2027-03-06",
         "hora": "07:00",
         "prontuario": "7828379",
@@ -4477,6 +4561,12 @@
         "data": "2027-03-08",
         "hora": "07:00",
         "prontuario": "46244828",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2027-03-08",
+        "hora": "08:00",
+        "prontuario": "46789921",
         "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
       },
       {
@@ -4643,6 +4733,12 @@
       },
       {
         "data": "2027-07-19",
+        "hora": "00:00",
+        "prontuario": "46789921",
+        "medico": "JOSE CESAR BATISTA OLIVEIRA FILHO"
+      },
+      {
+        "data": "2027-07-19",
         "hora": "07:00",
         "prontuario": "2855229",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
@@ -4668,11 +4764,11 @@
     ]
   },
   "meta": {
-    "fileName": "AGDA_4374158756361889366.csv",
-    "importedAt": "2026-08-03T13:06:30.973Z",
-    "totalRows": 874,
-    "totalMarcados": 705,
-    "totalDias": 48,
+    "fileName": "AGDA_7269606056517085866.csv",
+    "importedAt": "2026-08-03T14:45:45.711Z",
+    "totalRows": 1060,
+    "totalMarcados": 718,
+    "totalDias": 50,
     "isDefault": false,
     "source": "local"
   },
@@ -4703,14 +4799,6 @@
         "2026-11-16",
         "2026-11-23"
       ]
-    },
-    {
-      "id": "a1785762620924",
-      "medico": "Maria Tavares",
-      "tipo": "Férias",
-      "datas": [
-        "2026-09-14"
-      ]
     }
   ],
   "holidays": [
@@ -4737,6 +4825,12 @@
       "data": "2027-02-08",
       "tipo": "Ponto Facultativo",
       "nome": "Carnaval"
+    },
+    {
+      "id": "h1785768389023_2026-12-07",
+      "data": "2026-12-07",
+      "tipo": "Ponto Facultativo",
+      "nome": ""
     }
   ]
 }
