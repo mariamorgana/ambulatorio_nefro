@@ -264,8 +264,8 @@
       },
       {
         "data": "2027-04-05",
-        "marcados": 12,
-        "livres": 33,
+        "marcados": 13,
+        "livres": 32,
         "feriado": 0,
         "bloqueio_outros": 0,
         "reservado": 2,
@@ -4481,6 +4481,12 @@
       },
       {
         "data": "2027-04-05",
+        "hora": "09:24",
+        "prontuario": "3554318",
+        "medico": "MARIA BRANDAO TAVARES"
+      },
+      {
+        "data": "2027-04-05",
         "hora": "09:54",
         "prontuario": "46018214",
         "medico": "STENIO CERQUEIRA DE ATAIDE"
@@ -4878,10 +4884,10 @@
     ]
   },
   "meta": {
-    "fileName": "AGDA_7959864167680977318.csv",
-    "importedAt": "2026-10-05T10:46:16.340Z",
+    "fileName": "AGDA_196603071623086393.csv",
+    "importedAt": "2026-10-05T11:27:53.377Z",
     "totalRows": 1445,
-    "totalMarcados": 743,
+    "totalMarcados": 744,
     "totalDias": 46,
     "isDefault": false,
     "source": "local"
@@ -4912,6 +4918,14 @@
         "2026-11-09",
         "2026-11-16",
         "2026-11-23"
+      ]
+    },
+    {
+      "id": "a1785162681366",
+      "medico": "Maria Tavares",
+      "tipo": "Férias",
+      "datas": [
+        "2026-09-14"
       ]
     }
   ],
